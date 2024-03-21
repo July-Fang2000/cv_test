@@ -1,0 +1,41 @@
+#include <iostream>
+#include <opencv2/opencv.hpp>
+#include "include/videoCapture.h"
+#include "include/preprocess.h"
+#include "include/preMethod.h"
+#include "include/analysis.h"
+
+using namespace std;
+using namespace cv;
+
+int main()
+{
+    VideoCapture cap;
+    double fps;
+    Mat frame, result, mix_frame;
+
+    // Read video and create window
+    readAndDisplayVideo("Inputs/video/test2.mp4", cap, fps);
+    createWindow(cap);
+
+    while (cap.read(frame))
+    {
+        // Preprocess video frame
+        result = Mat(frame.size(), CV_8UC1);
+        process(frame, result);
+
+        // Search the train lines
+        drawLines(frame, result, mix_frame);
+
+        // Show the result
+        // imshow("video", mix_frame);
+
+        if (waitKey(0) == 27)
+            break;
+    }
+
+    // Release video capture and close window
+    releaseCap(cap);
+
+    return 0;
+}
