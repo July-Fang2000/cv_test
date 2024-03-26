@@ -25,5 +25,5 @@ void process(Mat frame, Mat &binaryFrame)
     // imshow("Original Frame", frame);
     // imshow("Gray Frame", grayFrame);
     // imshow("Blur Frame", blurFrame);
-    imshow("Binary Frame", binaryFrame);
+    // imshow("Binary Frame", binaryFrame);
 }

@@ -6,17 +6,16 @@
 using namespace std;
 using namespace cv;
 
-// 边缘检测参数
-
 // 边缘检测
-void lineDetect(Mat frame, Mat result)
-{
-    Canny(frame, result, 50, 200, 3);
-}
+// void lineDetect(Mat frame, Mat &result)
+// {
+//     Canny(frame, result, 50, 200, 3);
+// }
 
 // 感兴趣区域
 void roiSelect(Mat frame, Mat &result)
 {
+    result = Mat(frame.size(), CV_8UC1);
     Mat mask = Mat::zeros(frame.size(), CV_8UC1);
     Point PointArray[4];
     PointArray[0] = Point(300, mask.rows);
@@ -42,8 +41,9 @@ void transform(Mat frame, vector<Vec4i> &lines)
 }
 
 // 轨道线拟合
-void simulate(Mat &result, vector<Vec4i> &lines)
+void simulate(Mat frame, Mat &result, vector<Vec4i> &lines)
 {
+    result = Mat::zeros(frame.size(), CV_8UC3);
     for (size_t i = 0; i < lines.size(); i++)
     {
         Vec4i L = lines[i];
@@ -54,5 +54,6 @@ void simulate(Mat &result, vector<Vec4i> &lines)
 // 图像混合
 void mixLines(Mat frame1, Mat frame2, Mat &result)
 {
+    result = Mat(frame1.size(), CV_8UC3);
     addWeighted(frame1, 1, frame2, 2, 0.0, result);
 }

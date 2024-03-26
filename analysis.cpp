@@ -12,18 +12,20 @@ void drawLines(Mat frame_original, Mat frame, Mat &result)
     Mat lineFrame, roiFrame, simuFrame;
     vector<Vec4i> lines;
 
+    // 边缘检测
     // lineFrame = Mat(frame_original.size(), CV_8UC1);
     // lineDetect(frame, lineFrame);
 
-    roiFrame = Mat(frame.size(), CV_8UC1);
+    // 感兴趣区域
     roiSelect(frame, roiFrame);
 
+    // 霍夫变换
     transform(roiFrame, lines);
 
-    simuFrame = Mat::zeros(frame.size(), CV_8UC3);
-    simulate(simuFrame, lines);
+    // 轨道线拟合
+    simulate(roiFrame, simuFrame, lines);
 
-    result = Mat(frame.size(), CV_8UC3);
+    // 图像混合
     mixLines(frame_original, simuFrame, result);
 
     // Check if frames are empty before displaying

@@ -64,25 +64,25 @@ void binaryThreshold(Mat frame, Mat &result)
     threshold(frame, result, THRESH, MAXVAL, TYPE);
 }
 
-// 开运算
-void openOperation(Mat frame, Mat &result)
-{
-    Mat se = getStructuringElement(MORPH_RECT, Size(9, 9), Point(-1, -1));
-    erode(frame, result, se);
-    dilate(result, result, se);
-}
+// // 开运算
+// void openOperation(Mat frame, Mat &result)
+// {
+//     Mat se = getStructuringElement(MORPH_RECT, Size(9, 9), Point(-1, -1));
+//     erode(frame, result, se);
+//     dilate(result, result, se);
+// }
 
-// 闭运算
-void closeOperation(Mat frame, Mat &result)
-{
-    Mat se = getStructuringElement(MORPH_RECT, Size(9, 9), Point(-1, -1));
-    dilate(frame, result, se);
-    erode(result, result, se);
-}
+// // 闭运算
+// void closeOperation(Mat frame, Mat &result)
+// {
+//     Mat se = getStructuringElement(MORPH_RECT, Size(9, 9), Point(-1, -1));
+//     dilate(frame, result, se);
+//     erode(result, result, se);
+// }
 
-// 连通组件
-int connectComponets(Mat frame, Mat &result, Mat stats, Mat centroids)
-{
-    int nbComponents = connectedComponentsWithStats(frame, result, stats, centroids);
-    return nbComponents;
-}
+// // 连通组件
+// int connectComponets(Mat frame, Mat &result, Mat stats, Mat centroids)
+// {
+//     int nbComponents = connectedComponentsWithStats(frame, result, stats, centroids);
+//     return nbComponents;
+// }

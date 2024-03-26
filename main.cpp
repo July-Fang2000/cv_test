@@ -16,7 +16,6 @@ int main()
 
     // Read video and create window
     readAndDisplayVideo("Inputs/video/test2.mp4", cap, fps);
-    createWindow(cap);
 
     while (cap.read(frame))
     {
