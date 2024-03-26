@@ -19,12 +19,15 @@ void roiSelect(Mat frame, Mat &result)
 {
     Mat mask = Mat::zeros(frame.size(), CV_8UC1);
     Point PointArray[4];
-    PointArray[0] = Point(0, mask.rows);
-    PointArray[1] = Point(400, 330);
-    PointArray[2] = Point(570, 330);
-    PointArray[3] = Point(mask.cols, mask.rows);
+    PointArray[0] = Point(300, mask.rows);
+    PointArray[1] = Point(500, 200);
+    PointArray[2] = Point(700, 200);
+    PointArray[3] = Point(900, mask.rows);
     fillConvexPoly(mask, PointArray, 4, Scalar(255));
     bitwise_and(mask, frame, result);
+
+    // 用于观测ROI区域
+    // result.setTo(Scalar(255, 255, 255), ~mask);
 }
 
 // 霍夫变换

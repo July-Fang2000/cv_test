@@ -12,11 +12,11 @@ void drawLines(Mat frame_original, Mat frame, Mat &result)
     Mat lineFrame, roiFrame, simuFrame;
     vector<Vec4i> lines;
 
-    lineFrame = Mat(frame_original.size(), CV_8UC1);
-    lineDetect(frame, lineFrame);
+    // lineFrame = Mat(frame_original.size(), CV_8UC1);
+    // lineDetect(frame, lineFrame);
 
     roiFrame = Mat(frame.size(), CV_8UC1);
-    roiSelect(lineFrame, roiFrame);
+    roiSelect(frame, roiFrame);
 
     transform(roiFrame, lines);
 
@@ -35,7 +35,6 @@ void drawLines(Mat frame_original, Mat frame, Mat &result)
 
     // if (!lineFrame.empty())
     // {
-    //     cout << lineFrame.size() << endl;
     //     imshow("Line Frame", lineFrame);
     // }
     // else
