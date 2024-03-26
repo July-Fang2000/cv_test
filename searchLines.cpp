@@ -51,17 +51,5 @@ void simulate(Mat &result, vector<Vec4i> &lines)
 // 图像混合
 void mixLines(Mat frame1, Mat frame2, Mat &result)
 {
-    // Convert frame_original to CV_8UC3 if it's not already in that format
-    if (frame1.type() != CV_8UC3)
-    {
-        cv::cvtColor(frame1, frame1, cv::COLOR_BGR2RGB);
-    }
-
-    // Convert simuFrame to CV_8UC3 if it's not already in that format
-    if (frame2.type() != CV_8UC3)
-    {
-        cv::cvtColor(frame2, frame2, cv::COLOR_BGR2RGB);
-    }
-
     addWeighted(frame1, 1, frame2, 2, 0.0, result);
 }

@@ -21,7 +21,6 @@ int main()
     while (cap.read(frame))
     {
         // Preprocess video frame
-        // result = Mat(frame.size(), CV_8UC1);
         process(frame, result);
 
         // Search the train lines

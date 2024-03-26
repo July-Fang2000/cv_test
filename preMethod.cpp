@@ -12,15 +12,23 @@ const int THRESHOLD_TYPE = static_cast<int>(THRESH_BINARY);
 const int BLOCKSIZE = 11;
 const double C = 2;
 
+// 大津法阈值计算参数
+const double THRESH = 127;
+const double MAXVAL = 255;
+const int TYPE = THRESH_BINARY | THRESH_OTSU;
+
 // 滤波操作参数
 const int D = 5;
 const int SIGMA_COLOR = 150;
 const double SIGMA_SPACE = 10;
 
 // 卷积操作参数
-const Mat KERNEL = (Mat_<float>(3, 3) << -1, 0, 1,
-                    -2, 0, 2,
-                    -1, 0, 1);
+// const Mat KERNEL = (Mat_<float>(3, 3) << -1, 0, 1, -2, 0, 2, -1, 0, 1);
+const Mat KERNEL = (Mat_<float>(5, 5) << -1, 1, 0, 1, -1,
+                    -1, 1, 0, 1, -1,
+                    -1, 1, 0, 1, -1,
+                    -1, 1, 0, 1, -1,
+                    -1, 1, 0, 1, -1);
 
 // 灰度转换
 void cvt2gray(Mat frame, Mat &result)
@@ -53,7 +61,7 @@ void binaryThreshold(Mat frame, Mat &result)
 {
     result = Mat(frame.size(), CV_8UC1);
     // adaptiveThreshold(frame, result, MAX_VALUE, ADAPTIVE_METHOD, THRESHOLD_TYPE, BLOCKSIZE, C);
-    threshold(frame, result, 127, 255, THRESH_BINARY | THRESH_OTSU);
+    threshold(frame, result, THRESH, MAXVAL, TYPE);
 }
 
 // 开运算

@@ -28,12 +28,10 @@ void drawLines(Mat frame_original, Mat frame, Mat &result)
 
     // Check if frames are empty before displaying
 
-    if (!frame_original.empty())
-        imshow("Original Frame", frame_original);
-    else
-        cerr << "Error: Original frame is empty!" << endl;
-
-    imshow("frame", frame);
+    // if (!frame_original.empty())
+    //     imshow("Original Frame", frame_original);
+    // else
+    //     cerr << "Error: Original frame is empty!" << endl;
 
     // if (!lineFrame.empty())
     // {

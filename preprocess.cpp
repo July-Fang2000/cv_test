@@ -22,8 +22,8 @@ void process(Mat frame, Mat &binaryFrame)
     binaryThreshold(filterFrame, binaryFrame);
 
     // 显示图像
-    imshow("Original Frame", frame);
-    imshow("Gray Frame", grayFrame);
-    imshow("Blur Frame", blurFrame);
+    // imshow("Original Frame", frame);
+    // imshow("Gray Frame", grayFrame);
+    // imshow("Blur Frame", blurFrame);
     imshow("Binary Frame", binaryFrame);
 }
