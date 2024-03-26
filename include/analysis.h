@@ -7,6 +7,6 @@
 using namespace std;
 using namespace cv;
 
-void drawLines(Mat frame_original, Mat frame, Mat result);
+void drawLines(Mat frame_original, Mat frame, Mat &result);
 
 #endif // ANALYSIS_H

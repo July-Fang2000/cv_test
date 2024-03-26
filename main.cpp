@@ -21,14 +21,14 @@ int main()
     while (cap.read(frame))
     {
         // Preprocess video frame
-        result = Mat(frame.size(), CV_8UC1);
+        // result = Mat(frame.size(), CV_8UC1);
         process(frame, result);
 
         // Search the train lines
         drawLines(frame, result, mix_frame);
 
         // Show the result
-        // imshow("video", mix_frame);
+        imshow("video", mix_frame);
 
         if (waitKey(0) == 27)
             break;

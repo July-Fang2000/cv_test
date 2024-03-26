@@ -7,7 +7,7 @@
 using namespace std;
 using namespace cv;
 
-void drawLines(Mat frame_original, Mat frame, Mat result)
+void drawLines(Mat frame_original, Mat frame, Mat &result)
 {
     Mat lineFrame, roiFrame, simuFrame;
     vector<Vec4i> lines;
@@ -35,26 +35,26 @@ void drawLines(Mat frame_original, Mat frame, Mat result)
 
     imshow("frame", frame);
 
-    if (!lineFrame.empty())
-    {
-        cout << lineFrame.size() << endl;
-        imshow("Line Frame", lineFrame);
-    }
-    else
-        cerr << "Error: Line frame is empty!" << endl;
+    // if (!lineFrame.empty())
+    // {
+    //     cout << lineFrame.size() << endl;
+    //     imshow("Line Frame", lineFrame);
+    // }
+    // else
+    //     cerr << "Error: Line frame is empty!" << endl;
 
-    if (!roiFrame.empty())
-        imshow("ROI Frame", roiFrame);
-    else
-        cerr << "Error: ROI frame is empty!" << endl;
+    // if (!roiFrame.empty())
+    //     imshow("ROI Frame", roiFrame);
+    // else
+    //     cerr << "Error: ROI frame is empty!" << endl;
 
-    if (!simuFrame.empty())
-        imshow("Simu Frame", simuFrame);
-    else
-        cerr << "Error: Simulation frame is empty!" << endl;
+    // if (!simuFrame.empty())
+    //     imshow("Simu Frame", simuFrame);
+    // else
+    //     cerr << "Error: Simulation frame is empty!" << endl;
 
-    if (!result.empty())
-        imshow("Result Frame", result);
-    else
-        cerr << "Error: Result frame is empty!" << endl;
+    // if (!result.empty())
+    //     imshow("Result Frame", result);
+    // else
+    //     cerr << "Error: Result frame is empty!" << endl;
 }

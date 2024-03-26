@@ -18,16 +18,12 @@ const int SIGMA_COLOR = 150;
 const double SIGMA_SPACE = 10;
 
 // 卷积操作参数
-const Mat KERNEL1 = (Mat_<float>(3, 3) << -1, 0, 1,
+const Mat KERNEL = (Mat_<float>(3, 3) << -1, 0, 1,
                     -2, 0, 2,
                     -1, 0, 1);
 
-const Mat KERNEL2 = (Mat_<float>(3, 3) << -1, -2, 1,
-                    0, 0, 0,
-                    1, 2, 1);
-
 // 灰度转换
-void cvt2gray(Mat frame, Mat result)
+void cvt2gray(Mat frame, Mat &result)
 {
     cvtColor(frame, result, COLOR_BGR2GRAY);
 }
@@ -39,25 +35,29 @@ void cvt2gray(Mat frame, Mat result)
 // }
 
 // 滤波方法
-void blurMethod(Mat frame, Mat result)
+void blurMethod(Mat frame, Mat &result)
 {
+    result = Mat(frame.size(), CV_8UC1);
     bilateralFilter(frame, result, D, SIGMA_COLOR, SIGMA_SPACE);
 }
 
 // 卷积
-void filter(Mat frame, Mat result)
+void filter(Mat frame, Mat &result)
 {
-    filter2D(frame, result, -1, KERNEL1);
+    result = Mat(frame.size(), CV_8UC1);
+    filter2D(frame, result, -1, KERNEL);
 }
 
 // 自适应阈值计算 二值化
-void binaryThreshold(Mat frame, Mat result)
+void binaryThreshold(Mat frame, Mat &result)
 {
-    adaptiveThreshold(frame, result, MAX_VALUE, ADAPTIVE_METHOD, THRESHOLD_TYPE, BLOCKSIZE, C);
+    result = Mat(frame.size(), CV_8UC1);
+    // adaptiveThreshold(frame, result, MAX_VALUE, ADAPTIVE_METHOD, THRESHOLD_TYPE, BLOCKSIZE, C);
+    threshold(frame, result, 127, 255, THRESH_BINARY | THRESH_OTSU);
 }
 
 // 开运算
-void openOperation(Mat frame, Mat result)
+void openOperation(Mat frame, Mat &result)
 {
     Mat se = getStructuringElement(MORPH_RECT, Size(9, 9), Point(-1, -1));
     erode(frame, result, se);
@@ -65,7 +65,7 @@ void openOperation(Mat frame, Mat result)
 }
 
 // 闭运算
-void closeOperation(Mat frame, Mat result)
+void closeOperation(Mat frame, Mat &result)
 {
     Mat se = getStructuringElement(MORPH_RECT, Size(9, 9), Point(-1, -1));
     dilate(frame, result, se);
@@ -73,7 +73,7 @@ void closeOperation(Mat frame, Mat result)
 }
 
 // 连通组件
-int connectComponets(Mat frame, Mat result, Mat stats, Mat centroids)
+int connectComponets(Mat frame, Mat &result, Mat stats, Mat centroids)
 {
     int nbComponents = connectedComponentsWithStats(frame, result, stats, centroids);
     return nbComponents;
