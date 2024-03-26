@@ -2,8 +2,8 @@
 *.log
 
 # 忽略特定目录
-.vscode
-bin
+.vscode/
+bin/
 
 # 忽略特定文件
 config.env
