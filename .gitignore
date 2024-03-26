@@ -1,0 +1,44 @@
+# 忽略所有 .log 文件
+*.log
+
+# 忽略特定目录
+.vscode
+bin
+
+# 忽略特定文件
+config.env
+
+# 忽略嵌套目录下的特定文件
+**/temp/*
+
+# 忽略除了某个特定文件外的所有文件
+!keepme.txt
+
+# 忽略 Visual Studio 的用户文件
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# 忽略 Xcode 的用户文件
+*.pbxuser
+!default.pbxuser
+
+# 忽略所有 .a 文件
+*.a
+
+# 忽略特定扩展名的文件
+*.exe
+*.dmg
+
+# 忽略所有以 .tmp 结尾的文件
+*.tmp
+
+# 忽略所有以 .bak 结尾的文件
+*.bak
+
+# 忽略所有以 .swp 结尾的文件（常见于 Vim 编辑器的交换文件）
+*.swp
+
+# 忽略所有以 .swx 结尾的文件（常见于 Vim 编辑器的备份文件）
+*.swx
