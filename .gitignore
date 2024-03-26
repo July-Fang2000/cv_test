@@ -1,9 +1,11 @@
 # 忽略所有 .log 文件
 *.log
+*.DS_Store
 
 # 忽略特定目录
 .vscode/
 bin/
+main.dSYM/Contents/
 
 # 忽略特定文件
 config.env
