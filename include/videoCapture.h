@@ -7,7 +7,7 @@
 using namespace std;
 using namespace cv;
 
-void readAndDisplayVideo(const std::string &filename, cv::VideoCapture &cap, double &fps);
+void readAndDisplayVideo(const std::string &filename, cv::VideoCapture &cap);
 void createWindow(cv::VideoCapture &cap);
 void releaseCap(cv::VideoCapture &cap);
 

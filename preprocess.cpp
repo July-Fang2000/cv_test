@@ -5,9 +5,9 @@
 using namespace std;
 using namespace cv;
 
-void process(Mat frame, Mat &binaryFrame)
+void process(Mat frame, Mat &result)
 {
-    Mat grayFrame, histFrame, blurFrame, filterFrame;
+    Mat grayFrame, histFrame, blurFrame, filterFrame, binaryFrame, componentsFrame;
 
     // 灰度转换
     cvtColor(frame, grayFrame, COLOR_BGR2GRAY);
@@ -21,9 +21,14 @@ void process(Mat frame, Mat &binaryFrame)
     // 自适应阈值二值化
     binaryThreshold(filterFrame, binaryFrame);
 
+    // 连通组件
+    findComponents(binaryFrame, componentsFrame);
+
+    componentsFrame.copyTo(result);
     // 显示图像
     // imshow("Original Frame", frame);
     // imshow("Gray Frame", grayFrame);
     // imshow("Blur Frame", blurFrame);
     // imshow("Binary Frame", binaryFrame);
+    // imshow("Components Frame", componentsFrame);
 }

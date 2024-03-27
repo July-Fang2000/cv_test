@@ -1,7 +1,7 @@
 #include "include/videoCapture.h"
 
 // Function to read video file
-void readAndDisplayVideo(const std::string &filename, cv::VideoCapture &cap, double &fps)
+void readAndDisplayVideo(const std::string &filename, cv::VideoCapture &cap)
 {
     // Open the video file
     cap.open(filename);
@@ -12,9 +12,6 @@ void readAndDisplayVideo(const std::string &filename, cv::VideoCapture &cap, dou
         std::cerr << "Error: Unable to open the video file." << std::endl;
         exit(-1);
     }
-
-    // Get the frame rate of the video
-    fps = cap.get(cv::CAP_PROP_FPS);
 }
 
 // Function to create window for displaying video

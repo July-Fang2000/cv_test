@@ -11,11 +11,10 @@ using namespace cv;
 int main()
 {
     VideoCapture cap;
-    double fps;
     Mat frame, result, mix_frame;
 
     // Read video and create window
-    readAndDisplayVideo("Inputs/video/test2.mp4", cap, fps);
+    readAndDisplayVideo("Inputs/video/test2.mp4", cap);
 
     while (cap.read(frame))
     {

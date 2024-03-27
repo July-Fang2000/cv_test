@@ -7,6 +7,6 @@
 using namespace std;
 using namespace cv;
 
-void process(Mat frame, Mat &binaryFrame);
+void process(Mat frame, Mat &result);
 
 #endif // PROPROCESS_H

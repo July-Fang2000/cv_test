@@ -13,7 +13,6 @@ void filter(Mat frame, Mat &result);
 void binaryThreshold(Mat frame, Mat &result);
 // void openOperation(Mat frame, Mat &result);
 // void closeOperation(Mat frame, Mat &result);
-// int connectComponets(Mat frame, Mat &result, Mat stats, Mat centroids);
 // void histOperation(Mat frame, Mat result);
-
+void findComponents(Mat frame, Mat &result);
 #endif // PROPROCESS_H
